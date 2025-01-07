@@ -11,7 +11,16 @@ class StringCalculator
       end
   
       # Split the numbers using the custom delimiter and sum them
-      numbers.split(/#{delimiter}/).map(&:to_i).reduce(:+)
+      num_array = numbers.split(/#{delimiter}/).map(&:to_i)
+
+        # Check for negative numbers
+        negatives = num_array.select { |num| num < 0 }
+        unless negatives.empty?
+        raise "Negative numbers not allowed: #{negatives.join(', ')}"
+        end
+
+        # Sum the numbers
+        num_array.reduce(:+)
     end
   end
   
