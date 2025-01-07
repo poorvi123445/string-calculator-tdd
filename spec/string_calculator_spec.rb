@@ -8,5 +8,20 @@ RSpec.describe StringCalculator do
       calculator = StringCalculator.new
       expect(calculator.add('')).to eq(0)
     end
+
+    it 'returns the sum of numbers separated by commas' do
+        calculator = StringCalculator.new
+        expect(calculator.add('1,2,3')).to eq(6)
+      end
+  
+      it 'returns the sum of numbers separated by newlines' do
+        calculator = StringCalculator.new
+        expect(calculator.add("1\n2\n3")).to eq(6)
+      end
+  
+      it 'returns the sum of numbers separated by both commas and newlines' do
+        calculator = StringCalculator.new
+        expect(calculator.add("1\n2,3")).to eq(6)
+      end
   end
 end
